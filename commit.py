@@ -10,7 +10,6 @@ def commit(repository_path, commitId):
     commitPath = revert.getBackupPath(repository_path) + '\\' + commitId
     os.mkdir(commitPath)
     for the_file in os.listdir(getStagingArea(repository_path)):
-        print('prva')
         add.copy(getStagingArea(repository_path) + '\\' + the_file, commitPath + '\\' + the_file)
         
     for the_file in os.listdir(getStagingArea(repository_path)):
@@ -18,7 +17,7 @@ def commit(repository_path, commitId):
         try:
             if os.path.isfile(file_path):
                 os.unlink(file_path)
-            elif os.path.isdir(file_path): 
+            else: 
                 shutil.rmtree(file_path)
         except Exception as e:
             print(e)
@@ -26,12 +25,12 @@ def commit(repository_path, commitId):
         for the_file in os.listdir(revert.getBackupPath(repository_path) + '\\' + str(int(commitId) - 1)):
             if not(os.path.isdir(commitPath + '\\'  + os.path.basename(the_file)) or os.path.isfile(commitPath + '\\'  + os.path.basename(the_file))):
                 add.copy(revert.getBackupPath(repository_path) + '\\' + str(int(commitId) - 1) + '\\' + the_file, commitPath + '\\' + the_file)
-    
-    revert.revertToCommit(repository_path, commitId)
+                
+    #revert.revertToCommit(repository_path, commitId)
 
 #add.add('Folder', 'repozitorijum')
 #commit('repozitorijum', '2')
-revert.revertToCommit('repozitorijum', '1')
+#revert.revertToCommit('repozitorijum', '1')
     
     
     
