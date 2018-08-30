@@ -35,5 +35,5 @@ def parser(komanda,repath = os.getcwd()):
 #parser('add tekst.txt','repozitorijum')
 #parser('commit -a','repozitorijum')
 #parser('revert 2','repozitorijum')
-komanda = input()
-parser(komanda, 'repo')
+#komanda = input()
+#parser(komanda, 'repo')
