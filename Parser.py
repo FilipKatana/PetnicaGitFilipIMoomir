@@ -12,9 +12,14 @@ komande = {'init' : GitInit.init, 'add' : add.add, 'commit' : commit.commit,
 def parser(komanda,repath = os.getcwd()):
     #Pretvara komandu u funkciju
     #Prima ukucanu komandu i put do repozitorijuma kao parametre
+    
     operacija = komanda.split()
     operacija.append('')
     operacija.append('')
+    
+    if not operacija[0] in komande:
+        print('Invalid command');
+        return None;
     
     if operacija[0] == 'commit':
         if operacija[1] == '-a':
@@ -31,9 +36,3 @@ def parser(komanda,repath = os.getcwd()):
     else:
         komande[operacija[0]](operacija[1])
         
-
-#parser('add tekst.txt','repozitorijum')
-#parser('commit -a','repozitorijum')
-#parser('revert 2','repozitorijum')
-#komanda = input()
-#parser(komanda, 'repo')

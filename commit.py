@@ -11,8 +11,12 @@ def getStagingArea(repository_path = os.getcwd):
     return repository_path + '/stgarea'
 
 def commit(repository_path = os.getcwd()):
+    #Uzima put do repozitorijuma kao parametar
+    #Kopira sve iz staging area u backupove i brise sve fajlove koji nisu bili addovani
+    #Na kraju trazi od korisnika da doda komentar i isti cuva u log.txt
     
     latestCommit = getLatestCommit.getLatestCommit()
+    
     if latestCommit == None:
         print('Can not get latest commit')
         return None
@@ -56,6 +60,3 @@ def commit(repository_path = os.getcwd()):
     with open(repository_path + '/.newestcommit.txt','w') as LatestCommit:
         LatestCommit.write(commitId)
 
-#add.add('Folder', 'repozitorijum')
-#commit()
-#revert.revertToCommit(os.getcw, '1')

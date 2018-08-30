@@ -8,7 +8,7 @@ def getBackupPath(repositoryPath):
     return repositoryPath + '/.backups'
     
 def revertToCommit(commitID,repository = os.getcwd()):
-    #Kao parametar prima pud do repozitorijuma i sting u kom je broj komita na koji se vraca
+    #Kao parametar prima put do repozitorijuma i sting u kom je broj komita na koji se vraca
     #Vraca repozitorijum u stanje nekog prošlog komita
        
     backupPath = getBackupPath(repository)
