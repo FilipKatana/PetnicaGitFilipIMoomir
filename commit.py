@@ -10,13 +10,21 @@ import getLatestCommit
 def getStagingArea(repository_path = os.getcwd):
     return repository_path + '/stgarea'
 
-def commit(repository_path = os.getcwd()):
+def commit(flag = '', repository_path = os.getcwd()):
+    #Uzima put do repozitorijuma kao parametar
+    #Kopira sve iz staging area u backupove i brise sve fajlove koji nisu bili addovani
+    #Na kraju trazi od korisnika da doda komentar i isti cuva u log.txt
     
     latestCommit = getLatestCommit.getLatestCommit()
     if latestCommit == None:
         print('Can not get latest commit')
         return None
     
+    if(flag == '-a'):
+        for the_file in os.listdir(repository_path):
+            if not (the_file == '.backups') and (not the_file == 'stgarea') and (not the_file == 'log.txt') and (not the_file == '.newestcommit.txt'):
+                add.add(the_file,repository_path)
+                
     commitId = str(getLatestCommit.getLatestCommit() + 1)
     
     if not os.path.exists(revert.getBackupPath(repository_path) + '/' + commitId):
@@ -56,6 +64,3 @@ def commit(repository_path = os.getcwd()):
     with open(repository_path + '/.newestcommit.txt','w') as LatestCommit:
         LatestCommit.write(commitId)
 
-#add.add('Folder', 'repozitorijum')
-#commit()
-#revert.revertToCommit(os.getcw, '1')
