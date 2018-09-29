@@ -61,7 +61,6 @@ def Diff(commit1, commit2):
 
 
 
-print(Diff("Malo", "Alo"))
 
 
 
