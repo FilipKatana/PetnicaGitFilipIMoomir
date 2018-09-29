@@ -10,17 +10,18 @@ import getLatestCommit
 def getStagingArea(repository_path = os.getcwd):
     return repository_path + '/stgarea'
 
-def commit(flag = '', repository_path = os.getcwd()):
-    #Uzima put do repozitorijuma kao parametar
+def commit(flag = ''):
     #Kopira sve iz staging area u backupove i brise sve fajlove koji nisu bili addovani
     #Na kraju trazi od korisnika da doda komentar i isti cuva u log.txt
     
+    repository_path = os.getcwd()
     latestCommit = getLatestCommit.getLatestCommit()
     if latestCommit == None:
         print('Can not get latest commit')
         return None
     
     if(flag == '-a'):
+        print('a');
         for the_file in os.listdir(repository_path):
             if not (the_file == '.backups') and (not the_file == 'stgarea') and (not the_file == 'log.txt') and (not the_file == '.newestcommit.txt'):
                 add.add(the_file,repository_path)
