@@ -29,7 +29,8 @@ def init():
     if os.path.exists(os.path.join(os.getcwd(), ".backups")):
         return -1
     os.mkdir(".backups")
-    os.mkdir(os.path.join(os.getcwd(), ".backups", "stgarea"))
+    os.mkdir(os.path.join(os.getcwd(), "stgarea"))
     private.hide(os.path.join(os.getcwd(), ".backups"))
+
 
 
