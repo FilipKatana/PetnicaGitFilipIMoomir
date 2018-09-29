@@ -28,10 +28,10 @@ def commit(flag = ''):
                 
     commitId = str(getLatestCommit.getLatestCommit() + 1)
     
-    if not os.path.exists(revert.getBackupPath(repository_path) + '/' + commitId):
+    if os.path.exists(revert.getBackupPath(repository_path) + '/' + commitId):
         print('Commit already exists')
         return None
-    elif not os.path.existsgetStagingArea(repository_path):
+    elif not os.path.exists(getStagingArea(repository_path)):
         print('Staging area does not exist')
     elif not os.path.exists(repository_path + '/' + 'log.txt'):
         print('The log file does not exist')
@@ -55,9 +55,9 @@ def commit(flag = ''):
         except Exception as e:
             print(e)
     if os.path.isdir(revert.getBackupPath(repository_path) + '/' + str(int(commitId) - 1)):        
-        for the_file in os.listdir(revert.getBackupPath(repository_path) + '\\' + str(int(commitId) - 1)):
+        for the_file in os.listdir(revert.getBackupPath(repository_path) + '/' + str(int(commitId) - 1)):
             if not(os.path.isdir(commitPath + '/'  + os.path.basename(the_file)) or os.path.isfile(commitPath + '/'  + os.path.basename(the_file))):
-                add.copy(revert.getBackupPath(repository_path) + '/' + str(int(commitId) - 1) + '\\' + the_file, commitPath + '\\' + the_file)
+                add.copy(revert.getBackupPath(repository_path) + '/' + str(int(commitId) - 1) + '/' + the_file, commitPath + '/' + the_file)
     
     commitMsg = input("Type in your commit comment\n>")
     GitLog.WriteToLog(repository_path + '/' + 'log.txt', commitId, str(datetime.datetime.now()), getpass.getuser(), commitMsg)

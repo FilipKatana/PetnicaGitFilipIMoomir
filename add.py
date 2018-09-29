@@ -14,5 +14,6 @@ def copy(src, dest):
 def add(fileToAdd, repo):
     #Dodaje fajl u staging area
     #Parametri su fajl koji se dodaje i put do repozitorijuma
-    copy(repo + '\\' + fileToAdd, repo + '\\stgarea' + '\\' + fileToAdd) 
+    
+    copy(repo + '/' + fileToAdd, repo + '/stgarea' + '/' + fileToAdd) 
 
